@@ -18,9 +18,9 @@ class Transaction {
   @Column()
   category_id: string;
 
-  @ManyToOne(() => Category)
+  @ManyToOne(() => Category, category => category.transaction, { eager: true })
   @JoinColumn({ name: 'category_id' })
-  category: Category
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;
